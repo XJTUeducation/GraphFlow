@@ -5,13 +5,14 @@ This library contains several abstract concepts: Graph, Module, Link and Message
 Graph: A graph is a container that contains modules and links.
 Module: A module is an executable that shoule be implemented by user.
 Link: A link is a connector between modules.
-Message: information that flows via link from one module to another.
+Message: Information that flows via link from one module to another.
 
 # example: 
-  If we want to implement expression, a + b = ?, we may do it like this below:
-  Create three modules, one module named "a" with default value 10, another module named "b" with default valude 20, and the last module named "Add" that print out value of a+b.
+  If we want to implement expression a + b = ? We may do it like this below:
+  Create three modules, one module named "a" with default value 10, another module named "b" with default value 20, and the last module named "add" that prints out result of a+b.
   
 ##  1, Define message type IntMessage:
+
     class IntMessage: public Message {
     public:
       IntMessage(int value): mValue(value) {}
@@ -26,6 +27,7 @@ Message: information that flows via link from one module to another.
     };
 
 ##   2, Define Module Add, a and b:
+
    class AddModule: public Module {
     public:
       AddModule(): Module(std::string("add")) {}
@@ -68,6 +70,7 @@ Message: information that flows via link from one module to another.
     };
     
 ##  3, start to build graph, run & stop
+
   int main() {
     Graph *g = Graph::getInstance();  // get default graph instance
 

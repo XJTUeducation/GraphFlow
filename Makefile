@@ -16,7 +16,7 @@ SOURCES = $(wildcard *.cc $(CORE_DIR)/*.cc)
 CXXFLAGS += -g -O2 -Wall -fPIC -shared -Wl,--no-as-needed -std=c++11 -D$(PLATFORM_OPT) -lpthread
 
 all: $(TARGET) $(TOP_DIR)/examples
-	@echo "build $(TARGET) successful"
+	@echo "build done!"
 
 $(TARGET): $(SOURCES)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $^ -o $@
@@ -30,8 +30,10 @@ $(TARGET): $(SOURCES)
 
 $(TOP_DIR)/examples: $(TARGET)
 	make -C $(TOP_DIR)/examples/ADDITION
+	make -C $(TOP_DIR)/examples/EXPRESSION
 
 clean:
 	rm -rf $(OUTPUT_DIR)
 	make -C $(TOP_DIR)/examples/ADDITION clean
+	make -C $(TOP_DIR)/examples/EXPRESSION clean
 
